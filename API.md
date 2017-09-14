@@ -7,7 +7,7 @@
 
 ## Async
 
-[src/components/Async.js:19-80](https://github.com/m860/react-component-async/blob/021f44983692f36078f25367c54ca5d651049f70/src/components/Async.js#L19-L80 "Source code on GitHub")
+[src/components/Async.js:19-79](https://github.com/m860/react-component-async-module/blob/abb1fda211dfc2afe6152966d9730319e0c1d59f/src/components/Async.js#L19-L79 "Source code on GitHub")
 
 **Extends PureComponent**
 
@@ -32,7 +32,7 @@ Async - 异步组件
 
 ### propTypes
 
-[src/components/Async.js:25-29](https://github.com/m860/react-component-async/blob/021f44983692f36078f25367c54ca5d651049f70/src/components/Async.js#L25-L29 "Source code on GitHub")
+[src/components/Async.js:25-29](https://github.com/m860/react-component-async-module/blob/abb1fda211dfc2afe6152966d9730319e0c1d59f/src/components/Async.js#L25-L29 "Source code on GitHub")
 
 **Properties**
 

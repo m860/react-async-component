@@ -68,8 +68,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Async = function (_PureComponent) {
 	(0, _inherits3.default)(Async, _PureComponent);
 
-	/**@private*/
-
 	/**
   * @property {Array} modules - 需要引用的modules,使用System.import进行引用
   * @property {Function} children - 异步回调

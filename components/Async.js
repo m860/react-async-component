@@ -54,7 +54,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Async - 异步组件
  *
  * @example
- *
+ * import Async from 'react-component-async-module'
  * <Async
  *     modules={[
  *         System.import('./A.js')

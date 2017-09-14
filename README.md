@@ -10,3 +10,9 @@
 异步加载module
 
 [Examples & API Documentation](./API.md)
+
+## Install
+
+```bash
+$ npm i react-component-async-module --save
+```

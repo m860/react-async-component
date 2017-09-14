@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
  * Async - 异步组件
  *
  * @example
- *
+ * import Async from 'react-component-async-module'
  * <Async
  *     modules={[
  *         System.import('./A.js')

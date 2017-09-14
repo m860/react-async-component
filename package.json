@@ -1,6 +1,6 @@
 {
-  "name": "react-component-async",
-  "version": "0.0.0",
+  "name": "react-component-async-module",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/m860/react-component-async.git"
+    "url": "git+https://github.com/m860/react-component-async-module.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/m860/react-component-async/issues"
+    "url": "https://github.com/m860/react-component-async-module/issues"
   },
-  "homepage": "https://github.com/m860/react-component-async#readme",
+  "homepage": "https://github.com/m860/react-component-async-module#readme",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "babel-cli": "^6.22.2",

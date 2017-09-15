@@ -11,7 +11,7 @@ class Example extends Component {
 					modules={[
 						System.import('./A.js')
 					]}>
-					{ModuleA=>{
+					{ModuleA=> {
 						return <ModuleA/>
 					}}
 				</Async>
@@ -21,11 +21,39 @@ class Example extends Component {
 						System.import('./A.js'),
 						System.import('./B.js')
 					]}>
-					{(ModuleA,ModuleB)=>{
+					{(ModuleA, ModuleB)=> {
 						return (
 							<div>
 								<ModuleA/>
 								<ModuleB/>
+							</div>
+						);
+					}}
+				</Async>
+				<h5>sync module</h5>
+				<Async
+					modules={[
+						require('./C.js').default
+					]}>
+					{(ModuleC)=> {
+						return (
+							<div>
+								<ModuleC/>
+							</div>
+						);
+					}}
+				</Async>
+				<h5>async module & sync module</h5>
+				<Async
+					modules={[
+						System.import('./A.js'),
+						require('./C.js').default
+					]}>
+					{(ModuleA, ModuleC)=> {
+						return (
+							<div>
+								<ModuleA/>
+								<ModuleC/>
 							</div>
 						);
 					}}

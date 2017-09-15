@@ -69,7 +69,7 @@ var Async = function (_PureComponent) {
 	(0, _inherits3.default)(Async, _PureComponent);
 
 	/**
-  * @property {Array} modules - 需要引用的modules,使用System.import进行引用
+  * @property {Array} modules - 需要引用的modules,使用System.import进行引用,也可以使用同步的方式引用,如:require('xxx').default
   * @property {Function} children - 异步回调
   * @property {?Function} onError [()=>null] - 错误处理
   * */
@@ -78,12 +78,17 @@ var Async = function (_PureComponent) {
 
 		var _this = (0, _possibleConstructorReturn3.default)(this, (Async.__proto__ || (0, _getPrototypeOf2.default)(Async)).call(this, props));
 
+		_this._asyncModules = _this.props.modules.filter(function (f) {
+			return f.constructor.name === "Promise";
+		});
+		_this._syncModules = _this.props.modules.filter(function (f) {
+			return f.constructor.name === "Function";
+		});
 		_this.state = {
-			ready: false
+			ready: _this._asyncModules.length > 0 ? false : true
 		};
-		_this._modules = [];
+		_this._modules = _this._syncModules;
 		_this._mounted = false;
-		console.log(_this.props.modules);
 		return _this;
 	}
 
@@ -102,35 +107,43 @@ var Async = function (_PureComponent) {
 						switch (_context.prev = _context.next) {
 							case 0:
 								_context.prev = 0;
-								_context.next = 3;
-								return _promise2.default.all(this.props.modules);
 
-							case 3:
+								if (!(this._asyncModules.length > 0)) {
+									_context.next = 7;
+									break;
+								}
+
+								_context.next = 4;
+								return _promise2.default.all(this._asyncModules);
+
+							case 4:
 								modules = _context.sent;
 
-								this._modules = modules.map(function (module) {
+								this._modules = this._modules.concat(modules.map(function (module) {
 									return module.default;
-								});
+								}));
 								if (this._mounted) {
 									this.setState({
 										ready: true
 									});
 								}
-								_context.next = 11;
+
+							case 7:
+								_context.next = 12;
 								break;
 
-							case 8:
-								_context.prev = 8;
+							case 9:
+								_context.prev = 9;
 								_context.t0 = _context['catch'](0);
 
 								this.props.onError(_context.t0);
 
-							case 11:
+							case 12:
 							case 'end':
 								return _context.stop();
 						}
 					}
-				}, _callee, this, [[0, 8]]);
+				}, _callee, this, [[0, 9]]);
 			}));
 
 			function _load() {

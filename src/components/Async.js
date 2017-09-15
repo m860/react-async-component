@@ -18,7 +18,7 @@ import PropTypes from 'prop-types'
  * */
 export default class Async extends PureComponent {
 	/**
-	 * @property {Array} modules - 需要引用的modules,使用System.import进行引用
+	 * @property {Array} modules - 需要引用的modules,使用System.import进行引用,也可以使用同步的方式引用,如:require('xxx').default
 	 * @property {Function} children - 异步回调
 	 * @property {?Function} onError [()=>null] - 错误处理
 	 * */
@@ -33,12 +33,13 @@ export default class Async extends PureComponent {
 
 	constructor(props) {
 		super(props);
+		this._asyncModules = this.props.modules.filter(f=>f.constructor.name === "Promise");
+		this._syncModules = this.props.modules.filter(f=>f.constructor.name === "Function");
 		this.state = {
-			ready: false
+			ready: this._asyncModules.length > 0 ? false : true
 		};
-		this._modules = [];
+		this._modules = this._syncModules;
 		this._mounted = false;
-		console.log(this.props.modules)
 	}
 
 	/**
@@ -46,14 +47,16 @@ export default class Async extends PureComponent {
 	 * */
 	async _load() {
 		try {
-			let modules = await Promise.all(this.props.modules);
-			this._modules = modules.map((module)=> {
-				return module.default;
-			});
-			if (this._mounted) {
-				this.setState({
-					ready: true
-				});
+			if (this._asyncModules.length > 0) {
+				const modules = await Promise.all(this._asyncModules);
+				this._modules = this._modules.concat(modules.map((module)=> {
+					return module.default;
+				}));
+				if (this._mounted) {
+					this.setState({
+						ready: true
+					});
+				}
 			}
 		}
 		catch (ex) {

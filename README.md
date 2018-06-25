@@ -1,10 +1,10 @@
 # react-async-component
 
 <!-- badge -->
-[![npm version](https://img.shields.io/npm/v/react-component-async-module.svg)](https://www.npmjs.com/package/react-component-async-module)
-[![npm license](https://img.shields.io/npm/l/react-component-async-module.svg)](https://www.npmjs.com/package/react-component-async-module)
-[![npm download](https://img.shields.io/npm/dm/react-component-async-module.svg)](https://www.npmjs.com/package/react-component-async-module)
-[![npm download](https://img.shields.io/npm/dt/react-component-async-module.svg)](https://www.npmjs.com/package/react-component-async-module)
+[![npm version](https://img.shields.io/npm/v/@m860/react-async-component.svg)](https://www.npmjs.com/package/@m860/react-async-component)
+[![npm license](https://img.shields.io/npm/l/@m860/react-async-component.svg)](https://www.npmjs.com/package/@m860/react-async-component)
+[![npm download](https://img.shields.io/npm/dm/@m860/react-async-component.svg)](https://www.npmjs.com/package/@m860/react-async-component)
+[![npm download](https://img.shields.io/npm/dt/@m860/react-async-component.svg)](https://www.npmjs.com/package/@m860/react-async-component)
 <!-- endbadge -->
 
 异步加载module

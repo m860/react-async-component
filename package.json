@@ -1,8 +1,8 @@
 {
-  "name": "react-component-async-module",
+  "name": "@m860/react-async-component",
   "version": "1.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "components/AsyncComponent.js",
   "scripts": {
     "test": "jest --verbose",
     "dev": "export NODE_ENV=development && webpack-dev-server --host 0.0.0.0 --inline --progress --colors --port 3000 --content-base src/",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/m860/react-component-async-module.git"
+    "url": "git+https://github.com/m860/react-async-component.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/m860/react-component-async-module/issues"
+    "url": "https://github.com/m860/react-async-component/issues"
   },
-  "homepage": "https://github.com/m860/react-component-async-module#readme",
+  "homepage": "https://github.com/m860/react-async-component#readme",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "babel-cli": "^6.22.2",
@@ -54,11 +54,11 @@
     "url-loader": "^0.5.7",
     "webpack": "^2.7.0",
     "webpack-dev-server": "^2.7.1",
-    "yargs": "^8.0.2"
-  },
-  "dependencies": {
+    "yargs": "^8.0.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
+  },
+  "dependencies": {
   }
 }

@@ -1,4 +1,4 @@
-# react-component-async-module
+# react-async-component
 
 <!-- badge -->
 [![npm version](https://img.shields.io/npm/v/react-component-async-module.svg)](https://www.npmjs.com/package/react-component-async-module)
@@ -14,5 +14,5 @@
 ## Install
 
 ```bash
-$ npm i react-component-async-module --save
+$ npm i react-async-component --save
 ```

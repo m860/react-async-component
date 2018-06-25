@@ -2,12 +2,12 @@
 
 ### Table of Contents
 
--   [Async](#async)
+-   [AsyncComponent](#asynccomponent)
     -   [propTypes](#proptypes)
 
-## Async
+## AsyncComponent
 
-[src/components/Async.js:19-82](https://github.com/m860/react-component-async-module/blob/4f5e9ed202dfe17b9f13e6d0e082f25d5610452d/src/components/Async.js#L19-L82 "Source code on GitHub")
+[src/components/AsyncComponent.js:19-82](https://github.com/m860/react-async-component/blob/c7fb5b37b2f7ad04021d91b6498e4b9f5e25c6c4/src/components/AsyncComponent.js#L19-L82 "Source code on GitHub")
 
 **Extends PureComponent**
 
@@ -20,9 +20,9 @@ Async - 异步组件
 **Examples**
 
 ```javascript
-import Async from 'react-component-async-module'
+import Async from 'react-async-component'
 <Async
-    modules={[
+    components={[
         System.import('./A.js')
     ]}>
     {ModuleA=>{
@@ -33,10 +33,10 @@ import Async from 'react-component-async-module'
 
 ### propTypes
 
-[src/components/Async.js:25-29](https://github.com/m860/react-component-async-module/blob/4f5e9ed202dfe17b9f13e6d0e082f25d5610452d/src/components/Async.js#L25-L29 "Source code on GitHub")
+[src/components/AsyncComponent.js:25-29](https://github.com/m860/react-async-component/blob/c7fb5b37b2f7ad04021d91b6498e4b9f5e25c6c4/src/components/AsyncComponent.js#L25-L29 "Source code on GitHub")
 
 **Properties**
 
--   `modules` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** 需要引用的modules,使用System.import进行引用,也可以使用同步的方式引用,如:require('xxx').default
+-   `components` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** components,使用System.import进行引用,也可以使用同步的方式引用,如:require('xxx').default
 -   `children` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** 异步回调
 -   `onError` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)?** [()=>null] - 错误处理

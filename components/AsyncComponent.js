@@ -51,49 +51,58 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
- * Async - 异步组件
+ * 异步组件
  *
  * @example
- * import Async from 'react-async-component'
- * <Async
+ *
+ * import AsyncComponent from 'react-async-component'
+ *
+ * <AsyncComponent
  *     components={[
  *         System.import('./A.js')
  *     ]}>
  *     {ModuleA=>{
  *         return <ModuleA/>
  *     }}
- * </Async>
+ * </AsyncComponent>
  *
  * */
-var AsyncComponent = function (_PureComponent) {
-    (0, _inherits3.default)(AsyncComponent, _PureComponent);
+var AsyncComponent = function (_Component) {
+    (0, _inherits3.default)(AsyncComponent, _Component);
 
-    /**
-     * @property {Array} components - components,使用System.import进行引用,也可以使用同步的方式引用,如:require('xxx').default
-     * @property {Function} children - 异步回调
-     * @property {?Function} onError [()=>null] - 错误处理
-     * */
     function AsyncComponent(props) {
         (0, _classCallCheck3.default)(this, AsyncComponent);
 
+        //异步component
         var _this = (0, _possibleConstructorReturn3.default)(this, (AsyncComponent.__proto__ || (0, _getPrototypeOf2.default)(AsyncComponent)).call(this, props));
 
         _this.asyncComponents = props.components.filter(function (f) {
             return f.constructor.name === "Promise";
         });
-        _this.syncComponents = props.components.filter(function (f) {
+        _this.state = {
+            //是否就绪
+            ready: _this.asyncComponents.length > 0 ? false : true,
+            //错误信息
+            error: null
+        };
+        //已就绪的component,包括同步component
+        _this.components = props.components.filter(function (f) {
             return f.constructor.name === "Function";
         });
-        _this.state = {
-            ready: _this.asyncComponents.length > 0 ? false : true
-        };
-        _this.components = _this.syncComponents;
-        _this.mounted = false;
         return _this;
     }
 
     /**
      * @private
+     * */
+
+    /**
+     * propTypes
+     *
+     * @property {Array} components - components,使用`System.import`(webpack 4建议使用`import`的方式引用,需要使用babel插件`babel-plugin-syntax-dynamic-import`)进行引用,也可以使用同步的方式引用,如:require('xxx').default
+     * @property {Function} children - 异步回调
+     * @property {?Function} renderLoading
+     * @property {?Function} renderError - renderError包含一个参数
      * */
 
 
@@ -119,14 +128,13 @@ var AsyncComponent = function (_PureComponent) {
                             case 4:
                                 modules = _context.sent;
 
+                                //将异步component合并到组件列表中
                                 this.components = this.components.concat(modules.map(function (module) {
                                     return module.default;
                                 }));
-                                if (this.mounted) {
-                                    this.setState({
-                                        ready: true
-                                    });
-                                }
+                                this.setState({
+                                    ready: true
+                                });
 
                             case 7:
                                 _context.next = 12;
@@ -136,7 +144,9 @@ var AsyncComponent = function (_PureComponent) {
                                 _context.prev = 9;
                                 _context.t0 = _context['catch'](0);
 
-                                this.props.onError(_context.t0);
+                                this.setState({
+                                    error: _context.t0
+                                });
 
                             case 12:
                             case 'end':
@@ -160,11 +170,10 @@ var AsyncComponent = function (_PureComponent) {
                     while (1) {
                         switch (_context2.prev = _context2.next) {
                             case 0:
-                                this.mounted = true;
-                                _context2.next = 3;
+                                _context2.next = 2;
                                 return this.fetchAllComponent();
 
-                            case 3:
+                            case 2:
                             case 'end':
                                 return _context2.stop();
                         }
@@ -184,27 +193,21 @@ var AsyncComponent = function (_PureComponent) {
             var _props;
 
             if (!this.state.ready) {
-                return null;
+                return this.props.renderLoading ? this.props.renderLoading() : null;
+            }
+            if (this.state.error) {
+                return this.props.renderError ? this.props.renderError(this.state.error) : this.state.error.message;
             }
             return (_props = this.props).children.apply(_props, (0, _toConsumableArray3.default)(this.components));
         }
-    }, {
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
-            this.mounted = false;
-        }
     }]);
     return AsyncComponent;
-}(_react.PureComponent);
+}(_react.Component);
 
 AsyncComponent.propTypes = {
     components: _propTypes2.default.array.isRequired,
     children: _propTypes2.default.func.isRequired,
-    onError: _propTypes2.default.func
-};
-AsyncComponent.defaultProps = {
-    onError: function onError() {
-        return null;
-    }
+    renderLoading: _propTypes2.default.func,
+    renderError: _propTypes2.default.func
 };
 exports.default = AsyncComponent;

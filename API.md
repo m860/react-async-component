@@ -7,11 +7,11 @@
 
 ## AsyncComponent
 
-[src/components/AsyncComponent.js:19-82](https://github.com/m860/react-async-component/blob/c7fb5b37b2f7ad04021d91b6498e4b9f5e25c6c4/src/components/AsyncComponent.js#L19-L82 "Source code on GitHub")
+[src/components/AsyncComponent.js:21-88](https://github.com/m860/react-async-component/blob/2777387cabdb53aa8c4b3625479694a6d3ff3e8a/src/components/AsyncComponent.js#L21-L88 "Source code on GitHub")
 
-**Extends PureComponent**
+**Extends Component**
 
-Async - 异步组件
+异步组件
 
 **Parameters**
 
@@ -20,23 +20,27 @@ Async - 异步组件
 **Examples**
 
 ```javascript
-import Async from 'react-async-component'
-<Async
+import AsyncComponent from 'react-async-component'
+
+<AsyncComponent
     components={[
         System.import('./A.js')
     ]}>
     {ModuleA=>{
         return <ModuleA/>
     }}
-</Async>
+</AsyncComponent>
 ```
 
 ### propTypes
 
-[src/components/AsyncComponent.js:25-29](https://github.com/m860/react-async-component/blob/c7fb5b37b2f7ad04021d91b6498e4b9f5e25c6c4/src/components/AsyncComponent.js#L25-L29 "Source code on GitHub")
+[src/components/AsyncComponent.js:30-35](https://github.com/m860/react-async-component/blob/2777387cabdb53aa8c4b3625479694a6d3ff3e8a/src/components/AsyncComponent.js#L30-L35 "Source code on GitHub")
+
+propTypes
 
 **Properties**
 
--   `components` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** components,使用System.import进行引用,也可以使用同步的方式引用,如:require('xxx').default
+-   `components` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** components,使用`System.import`(webpack 4建议使用`import`的方式引用,需要使用babel插件`babel-plugin-syntax-dynamic-import`)进行引用,也可以使用同步的方式引用,如:require('xxx').default
 -   `children` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** 异步回调
--   `onError` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)?** [()=>null] - 错误处理
+-   `renderLoading` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)?** 
+-   `renderError` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)?** renderError包含一个参数

@@ -1,6 +1,6 @@
 # react-async-component
 
-异步组件
+加载异步组件
 
 <!-- badge -->
 [![npm version](https://img.shields.io/npm/v/@m860/react-async-component.svg)](https://www.npmjs.com/package/@m860/react-async-component)
